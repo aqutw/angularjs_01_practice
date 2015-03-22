@@ -5,12 +5,29 @@
 <meta charset=utf-8 />
 </head>
 <body ng-app="myApp">
-  <form name="form" novalidate>
+  <form name="frm" novalidate ng-controller="formController">
     <label name="email">Your email</label>
-    <input type="email" name="email" ng-model="email" placeholder="Email Address" />
+    <input type="email" name="email" ng-model="email" placeholder="Email Address" /><br>
+    pristine={{frm.email.$pristine}}<br>
+    dirty={{frm.email.$dirty}}<br>
+    valid={{frm.email.$valid}}<br>
+    invalid={{frm.email.$invalid}}<br>
+    error={{frm.email.$error}}<br>
+    <hr>
+    try aaAA aaAA9<input type="text" name="name" ng-model="name" placeholder="name" ng-pattern="/^[a-zA-Z]+$/" /><br>
+    pristine={{frm.name.$pristine}}<br>
+    dirty={{frm.name.$dirty}}<br>
+    valid={{frm.name.$valid}}<br>
+    invalid={{frm.name.$invalid}}<br>
+    error={{frm.name.$error}}<br>
+    <hr>
+    error={{frm.$error}}<br>
   </form>
   <script>
-  
+  var myApp = angular.module('myApp', []);
+  myApp.controller('formController', ['$scope', function ($scope) {
+    
+  }])
   </script>
 </body>
 </html>
