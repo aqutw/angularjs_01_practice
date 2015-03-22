@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app="app"><!--Here MUST be ng-app="app"!!!!!!!!!! (cannot use ng-app only) -->
+  <head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"></script>
+  </head>
+  <body>
+    <div ng-controller="FirstController">
+      <button ng-click="add(1)">Add</button>
+      <button ng-click="sub(1)">Subtract</button>
+      <h4>current counter = {{counter}}</h4>
+    </div>
+    <script>
+      var app = angular.module('app',[]);
+      app.controller('FirstController', function($scope){
+        $scope.counter = 0;
+        $scope.add = function(amount){ 
+          $scope.counter += amount; 
+        };
+        $scope.sub = function(amount){ 
+          $scope.counter -= amount; 
+        };
+      });
+    </script>
+  </body>
+</html>
