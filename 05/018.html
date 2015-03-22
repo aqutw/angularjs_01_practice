@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"></script>
+  </head>
+  <body>
+    <h1>Child accesses Parent's variable</h1>
+    <div ng-controller="ParentController">
+      <div ng-controller="ChildController">
+        <button ng-click="sayHello()">say hello</button>
+      </div>
+      {{person}}
+    </div>
+    <script>
+    var app = angular.module('app', []);
+    app.controller('ParentController', ['$scope', function ($scope) {
+      $scope.person = {greeted: false};
+    }])
+
+    app.controller('ChildController', ['$scope', function ($scope) {
+      $scope.sayHello = function(){
+        $scope.person.name = 'Ari Lerner';
+      }
+    }])
+    </script>
+  </body>
+</html>
