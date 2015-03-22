@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+<meta charset=utf-8 />
+</head>
+<body ng-app="myApp">
+  <h1>Customize filter</h1>
+  {{ 'aBcsdaeD' | myCapitalize }}
+  <script>
+  angular.module('myApp', [])
+  .filter('myCapitalize', function(){
+    return function(input){
+      if(input){ 
+        return input[0].toUpperCase() + input.slice(1);
+      }
+    }
+  });
+  </script>
+</body>
+</html>
