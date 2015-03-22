@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+<meta charset=utf-8 />
+</head>
+<body ng-app="myApp">
+  <div ng-controller="MyController">
+  {{name | uppercase}}, <br>
+  {{name2}}, <br>
+  {{123.456789 | number:2}},<br>
+  {{123 | currency}},<br>
+  {{today | date:'medium'}},<br>
+  {{today | date:'short'}}<br>
+  {{today | date:'fullDate'}}<br>
+  {{today | date:'longDate'}}<br>
+  ...<br>
+  {{today | date:'yyyy'}}<br>
+  {{today | date:'EEEE'}}<br>
+  {{today | date:'Z'}}<br>
+<hr>
+<h2>page 26</h2>
+  {{ a | filter: 'e' }}
+  <br>
+  {{ a | filter: '!e' }}
+  <br>
+  {{ a2 | filter:{c:'c'} }}
+  <br>
+  {{ a2 | filter:{c:'!c'} }}
+  <br>
+  {{ ['Aklsdf', 'sdafElas', 'xzlf', 'EWWT'] | filter:myIsCapitalized }}
+  <br>
+  {{ obj }}
+  {{ {'name':'Ari', 'City':'Taipei'} }}
+  {{ {'name':'Ari', 'City':'Taipei'} | json }}
+  <h2>limitTo page 27</h2>
+  {{ 'abcdefg' | limitTo: 3 }}<br>
+  {{ 'abcdefg' | limitTo: -3 | uppercase }}<br>
+  {{ 'abcdefg'.split('') | limitTo: 3 }}<br>
+  {{ 'abcdefg'.split('') | limitTo: -3 }}<br>
+  {{ 1234567890 | number }}<br>
+  {{ 1234567890 | number:2 }}<br>
+  <h2>orderBy page 28 (TODO more detail)</h2>
+  {{ 
+    [
+      {'name': 'Ari', 'status': 'awake'},
+      {'name': 'Q', 'status': 'sleeping'},
+      {'name': 'Nate', 'status': 'awake'}
+    ] | orderBy: 'name'
+  }}
+  <p style=color:red>remeber! the last element should not have dot.</p>
+  {{ 
+    [
+      {'name': 'Ari', 'status': 'awake'},
+      {'name': 'Q', 'status': 'sleeping'},
+      {'name': 'Nate', 'status': 'awake'}
+    ] | orderBy: '-name'
+  }}
+  </div>
+  <script>
+  angular.module('myApp', [])
+  .controller('MyController', function($scope, $filter){
+    $scope.myIsCapitalized = function(str){
+      return str[0] == str[0].toUpperCase();
+    }
+
+    $scope.obj = {'name':'Ari', 'City':'Taipei'};
+
+    $scope.a = ['Ari', 'Lerner', 'Likes', 'To', 'Eat', 'Pizza'];
+    $scope.a2 = [{c:'xxx'}, {c:'c'}, {c:'cc'}];
+    $scope.today = new Date;
+    $scope.name = "dalks";
+    $scope.name2 = $filter('lowercase')('EWSFSDiio');
+  });
+  </script>
+</body>
+</html>
