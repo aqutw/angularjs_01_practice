@@ -8,6 +8,7 @@
       <button ng-click="add(1)">Add</button>
       <button ng-click="sub(1)">Subtract</button>
       <h4>current counter = {{counter}}</h4>
+      {{person}} <!-- debug way -->
     </div>
     <script>
       var app = angular.module('app',[]);
@@ -19,6 +20,8 @@
         $scope.sub = function(amount){ 
           $scope.counter -= amount; 
         };
+
+        $scope.person = {name:'Ari Lerner'};
       });
     </script>
   </body>
