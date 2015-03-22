@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"></script>
+  </head>
+  <body>
+    <div ng-controller="MyController">
+      <h1>Try to type person or 1+1</h1>
+      <input ng-model="expr" type="text" placeholder="Enter an expression" />
+      <h2>{{parsedValue}}</h2>
+    </div>
+    <script>
+    angular.module('app', [])
+    .controller('MyController', ['$scope', '$parse', function ($scope, $parse) {
+      $scope.person = {
+        name: "Ari Lerner"
+      };
+
+      $scope.$watch('expr', function(newVal, oldVal, scope){
+        if( newVal!==oldVal ){
+          // Let's set up our parseFun with the expression
+          var parseFunc = $parse(newVal);
+          // Get the value of the parsed expression, set it on the scope for output
+          $scope.parsedValue = parseFunc(scope);
+          console.log(scope==$scope)
+        }
+      });
+    }])
+    </script>
+  </body>
+</html>
